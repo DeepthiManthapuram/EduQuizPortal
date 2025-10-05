@@ -1,6 +1,7 @@
 # src/dao/supabase_client.py
 import os
 import sys
+import streamlit as st
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
@@ -19,8 +20,8 @@ else:
     # Try loading from current directory as fallback
     load_dotenv()
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 print(f"🔍 Supabase URL: {SUPABASE_URL}")
 print(f"🔍 Supabase Key: {'*' * 20 if SUPABASE_KEY else 'NOT FOUND'}")
